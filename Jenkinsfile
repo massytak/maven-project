@@ -4,13 +4,13 @@ pipeline {
   parameters{
     string(name:'tomcat_dev',
     defaultValue:'/opt/tomcat/webapps',
-    description:'Staging Server : 8080',
+    description:'Staging Server : 8080',)
     string(name:'tomcat_prod',
     defaultValue:'/opt/tomcat2/webapps',
-    description:'Production Server : 8080'
+    description:'Production Server : 8090')
   }
            
-           triggers {pollSCM('* * * * *')}//Polling Source Control
+  triggers {pollSCM('* * * * *')}//Polling Source Control
            
            stages {
              stage('build'){
