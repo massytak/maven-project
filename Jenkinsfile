@@ -14,7 +14,7 @@ pipeline {
            
            stages {
              stage('build'){
-               steps{bat 'mvn clean package'}
+               steps{sh 'mvn clean package'}
                post{
                  success{
                  echo "Now Archiving..."
@@ -26,13 +26,13 @@ pipeline {
                parallel{
                   stage('Deploy to Staging'){
                     steps {
-                      bat "cp **/target/*.war $tomcat_dev"
+                      sh "cp **/target/*.war $tomcat_dev"
                            }
                          }
                  
                  stage('Deploy to production'){
                     steps {
-                      bat "cp **/target/*.war $tomcat_prod"
+                      sh "cp **/target/*.war $tomcat_prod"
                            }
                          }
                        }
